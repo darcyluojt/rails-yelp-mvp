@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: [ :show, :edit ]
+  before_action :set_restaurant, only: [ :show, :edit, :update, :destroy ]
   # /restaurants
   def index
     @restaurants = Restaurant.all
@@ -7,11 +7,12 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
-    if @restaurant.save
-      redirect_to restaurant_path(@restaurant)
-    else
-      render :edit, status: :unprocessable_entity
-    end
+      if @restaurant.save
+        redirect_to restaurant_path(@restaurant)
+      else
+        render :edit, status: :unprocessable_entity
+      end
+  end
 
   # /restaurants/new
   def new
@@ -26,12 +27,13 @@ class RestaurantsController < ApplicationController
   end
 
   def update
+    @restaurant.update(restaurant_params)
+    redirect_to restaurant_path(@restaurant), notice: "Restaurant was updated."
   end
 
   def destroy
     @restaurant.destroy
     redirect_to restaurants_path, notice: "Restaurant was deleted."
-  end
   end
 
   private

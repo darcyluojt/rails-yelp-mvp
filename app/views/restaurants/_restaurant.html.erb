@@ -1,9 +1,21 @@
-<%@restaurants.each do |res|%>
-<h1><%= res.name %></h1>
-<h2><%= res.category %></h2>
-<h3>Address: <%= res.address %></h3>
-<p><strong>Reviews</strong></p>
-<%= res.reviews.each do |review| %>
-<p><%= review.content %></p>
-<% end %>
-<% end %>
+<div class="container bg-light my-4">
+  <div class="row justify-content-center">
+    <div class="col-10 mx-2">
+      <h1 class='text-center'><%= @restaurant.name %></h1>
+      <h2 class='text-center'>Cuisine type: <%= @restaurant.category %></h2>
+      <h3 class='text-center'>Address: <%= @restaurant.address %></h3>
+      <p class='text-center'><button class='btn btn-info text-center'><%= link_to 'edit', edit_restaurant_path(params[:id]) %></button>
+      <button class='btn btn-danger text-center'><%= link_to 'delete', restaurant_path(@restaurant), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></button>
+      <button class='btn border text-center'><%= link_to 'add your review', new_restaurant_review_path(@restaurant)%></button>
+      </p>
+      <p class='text-center'><strong>Reviews</strong></p>
+      <% @restaurant.reviews.each do |review| %>
+      <div class="card">
+        <p><%= "😋" * review.rating %><%= review.content %></p>
+      </div>
+      <% end %>
+    </div>
+     <p class="btn text-center m-4" color='white'><%= link_to 'see all restaurants', restaurants_path %></p>
+  </div>
+
+</div>

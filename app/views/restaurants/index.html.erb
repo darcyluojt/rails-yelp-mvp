@@ -1,4 +1,13 @@
-<h1>View all restaurants</h1>
+<div class="container">
+  <h1 class="text-center m-3">View all restaurants</h1>
+  <p><%= link_to 'create restaurant', new_restaurant_path %></p>
+  <div class="row">
 <%@restaurants.each do |res|%>
-<h2><%= link_to res.name, res %></h2>
+<div class="card border bg-light col-5 m-2">
+<h2 class="text-center"><%= link_to res.name, res %></h2>
+<p class="text-center">Cuisine: <%= res.category %></p>
+</div>
 <% end %>
+  </div>
+
+</div>

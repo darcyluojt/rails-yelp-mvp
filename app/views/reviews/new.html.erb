@@ -1,0 +1,8 @@
+<div class="container my-4">
+  <h1 class="text-center">Leave your review</h1>
+<%= simple_form_for [@restaurant, @review] do |f| %>
+  <%= f.input :content %>
+  <%= f.input :rating, collection: 0..5 %>
+  <%= f.submit %>
+<% end %>
+</div>
