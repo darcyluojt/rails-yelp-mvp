@@ -1,0 +1,9 @@
+<%@restaurants.each do |res|%>
+<h1><%= res.name %></h1>
+<h2><%= res.category %></h2>
+<h3>Address: <%= res.address %></h3>
+<p><strong>Reviews</strong></p>
+<%= res.reviews.each do |review| %>
+<p><%= review.content %></p>
+<% end %>
+<% end %>

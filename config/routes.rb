@@ -11,4 +11,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  # create - new & create
+  # read - index & show
+  # update - edit & update
+  # delete - destroy
+  resources :restaurants do
+    resources :reviews
+  end
 end

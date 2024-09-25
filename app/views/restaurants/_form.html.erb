@@ -1,0 +1,6 @@
+<%= simple_form_for(restaurant) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.select :category, options_for_select(["chinese", "italian", "japanese", "french", "belgian"]) %>
+  <%= f.submit %>
+<% end %>

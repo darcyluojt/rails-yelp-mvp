@@ -1,0 +1,4 @@
+<h1>View all restaurants</h1>
+<%@restaurants.each do |res|%>
+<h2><%= link_to res.name, res %></h2>
+<% end %>
